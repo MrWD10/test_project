@@ -4,6 +4,11 @@
 <br>
 <br>
 <br>
+<div id="target-for-change">
+  Associated Business section
+  
+</div>
+
 
 <table class="table">
   <thead>
@@ -20,8 +25,11 @@
         <td><%= e.email %></td>
         <td> <%= link_to "Edit", edit_user_path(e) %></td>
         <td> <%= link_to 'Delete', user_path(e), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%=select_tag "credit_card", options_for_select(e.businesses.map{|m| m.name}) %></td>
+        <td><%=select_tag "Associated Businesses", options_for_select(e.businesses.map{|m| m.name}) %></td>
+     <td><%= link_to 'Associated Businesses', user_path(e), remote: true %></td>
+
       </tr>
+
     <%end%>
   </tbody>
 </table>

@@ -1,0 +1,5 @@
+
+<h4>Associated businesses for <%= @user.username%> are:</h4>
+<%@user.businesses.each do |l|%>
+<%=l.name%><br>
+<%end%>

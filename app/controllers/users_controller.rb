@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @users = User.order(created_at: :desc)
 
       authorize @users 
-      #format.js
+    
 
 
 end
@@ -24,7 +24,6 @@ end
 
     def show
       authorize @user
-
     end
 
     def create
