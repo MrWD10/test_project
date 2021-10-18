@@ -26,9 +26,11 @@ class BusinessPolicy < ApplicationPolicy
   end
   
   def show?
+    @user.support? ?  @business.business_users.where(user_id:  @user.id).present? : @user.admin?
+
+  
     #  @user.writingbroker? ?  @business.owner == @user : @user.admin?
      @user.writingbroker? ?  @business.business_users.where(user_id:  @user.id).present? : @user.admin?
-     @user.writingbroker? || @user.support? ?  @business.business_users.where(user_id:  @user.id).present? : @user.admin?
 
     end
 

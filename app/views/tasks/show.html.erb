@@ -23,7 +23,7 @@
 <%= User.find(b.user_id).username%><br>
 <%end%>
 
-
+<%= Business.find(@task.business_id).business_users.where(user_id:  current_user).present? %>
 <h3>Created by:</h3>
 <%= User.find(Business.find(@task.business_id).owner_id).username%>
 <h3>Image is: </h3>

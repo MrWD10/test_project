@@ -15,7 +15,7 @@ class TasksController < ApplicationController
         end
     
         def show
-
+        authorize @task
 
         end
     
