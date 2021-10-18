@@ -1,0 +1,37 @@
+<h1> Task Page </h1>
+
+<%= link_to "Create New Task", new_task_url %>
+<br>
+<br>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Task title</th>
+      <th scope="col">Due date</th>
+            <th scope="col">Task type</th>
+      <th scope="col">Associated Business</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <th scope="row"></th>
+<% @tasks.each do |e| %>
+            <tr>
+
+<td><%= link_to e.title, task_path(e) %></td>
+    <td><%= e.due_date %></td>
+        <td><%= e.task_type %></td>
+                <td><%= Business.find(e.business_id).name %></td>
+
+
+
+     <td> <%= link_to "Edit", edit_task_path(e) %></td>
+   <td> <%= link_to 'Delete', task_path(e), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
+    <%end%>
+  </tbody>
+</table>
+

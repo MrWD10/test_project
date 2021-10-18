@@ -1,0 +1,18 @@
+<h1> End user Page </h1>
+
+<%= link_to "Create New end user", new_end_user_url %>
+<br>
+<br>
+<br>
+<tr>
+<% @end_users.each do |e| %>
+    <td><%= link_to e.name, end_user_path(e) %></td>
+    <td><%= e.e_mail %></td>
+        <td><%= e.pass %></td>
+
+
+      <%= link_to "Edit", edit_end_user_path(e) %>
+    <%= link_to 'Delete', end_user_path(e), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<% end %>
+</tr>

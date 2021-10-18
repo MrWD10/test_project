@@ -1,0 +1,44 @@
+
+<%= form_for(@task) do |f| %>
+
+
+<div class="field">
+     <%= f.label "Title" %><br />
+     <%= f.text_field :title, autofocus: true %>
+</div>
+
+  <div class="field">
+    <%= f.label "Due date" %><br />
+    <%= f.date_field :due_date,value: Date.current,min: Date.today%>
+  </div>
+
+
+ <div class="field"> 
+       <%= f.label "Select Business" %> <br/>
+     
+       <%= f.select :business_id, Business.all.map{|p| [p.name, p.id]}, prompt: "Please select" %> 
+      <br>
+
+    </div> 
+
+
+ <div class="field"> 
+       <%= f.label "Task_type" %> <br/>
+     
+       <%= f.select(:task_type, options_for_select([['feature','feature'],['bug','bug']]),{include_blank: true}) %> 
+      <br>
+
+    </div> 
+
+ <div class="field">
+    <%= f.label "Image" %><br />
+    <%= f.file_field :img %>
+  </div>
+  
+<br/>
+<br/>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+
+<%= form_for(@business) do |form| %>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :Description %>
+      <%= form.text_area :decription %>
+    </div>
+
+ <%# <div class="field"> %>
+      <%# <%= form.label "Members" %>
+     
+      <%# <%= form.select(:members, options_for_select([['paid','paid'],['upaid','upaid']]),{include_blank: true}) %> 
+      <br>
+
+    <%# </div> %>
+  
+  <%= fields_for(@business_user) do |ab|%>
+    <div class="field">
+      <%= ab.label "Select Members:" %>
+      <% User.joins(:business_users).where("business_users.business_id = :address",:address=>@business.id).each do |b| %>
+
+
+<%= b.username%>
+<%= ","%>
+
+<%end%>
+      <br/>
+        <%= collection_select(:users,:id, User.where('id != ?',current_user.id.to_s),:id,:username,{},{:multiple=> true}) %>
+    </div>
+    <% end%>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

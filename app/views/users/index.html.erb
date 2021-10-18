@@ -1,0 +1,31 @@
+<h1> User Page </h1>
+
+<%= link_to "Create New end user", new_user_path %>
+<br>
+<br>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User name</th>
+      <th scope="col">Eamil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <th scope="row"></th>
+    <% @users.each do |e| %>
+      <tr>
+        <td><%= link_to e.username ,user_path(e)%></td>
+        <td><%= e.email %></td>
+        <td> <%= link_to "Edit", edit_user_path(e) %></td>
+        <td> <%= link_to 'Delete', user_path(e), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=select_tag "credit_card", options_for_select(e.businesses.map{|m| m.name}) %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+
+

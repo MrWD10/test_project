@@ -1,0 +1,37 @@
+
+
+<h1> Business Page </h1>
+
+
+<%= link_to "Create New Business", new_business_url %>
+<br>
+<br>
+<br>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Business name</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <th scope="row"></th>
+      <% @businesses.each do |b| %>
+            <tr>
+
+<td>
+       <%= link_to b.name, business_path(b) %></td>
+   <td><%= b.decription %>    </td>
+
+
+     <td> <%= link_to "Edit", edit_business_path(b) %></td>
+   <td> <%= link_to 'Delete', business_path(b), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    </tr>
+
+    <%end%>
+  </tbody>
+</table>
+
+

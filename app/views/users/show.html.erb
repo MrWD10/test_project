@@ -1,0 +1,12 @@
+<p> <%= @user.username %> </p>
+
+<p> <%= @user.email %> </p>
+
+ <h3> This user has these business </h3>
+
+
+
+<%@user.businesses.each do |l|%>
+<%=l.name%><br>
+<%end%>
+

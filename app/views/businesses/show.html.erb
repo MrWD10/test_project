@@ -1,0 +1,19 @@
+
+<h3>Business name:</h3>
+
+<p> <%= @business.name %> </p>
+<h3>Description:</h3>
+
+<p> <%= @business.decription %> </p>
+<h3>Members are:</h3>
+
+
+<% User.joins(:business_users).where("business_users.business_id = :address",:address=>@business.id).each do |b| %>
+
+
+<%= b.username%>
+<br>
+<%end%>
+<h3>Created by:</h3>
+<%= User.find(@business.owner_id).username%>
+
