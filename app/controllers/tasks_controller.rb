@@ -1,8 +1,14 @@
 class TasksController < ApplicationController
         before_action :set_task, only: %i[  show edit update destroy ]
     
-        def index
-          @tasks = Task.all
+
+          def index
+            if current_user.admin?
+              @tasks = Task.all
+                        else
+              @tasks= current_user.tasks
+            end
+
           authorize  @tasks
 
         end

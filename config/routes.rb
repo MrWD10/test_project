@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
   get 'users/index'
+resources :admin
   devise_for :users, path: '', path_names: {sign_in: 'login',
     sign_out: 'logout', sign_up: 'register'}
   resources :businesses

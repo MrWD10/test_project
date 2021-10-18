@@ -1,0 +1,15 @@
+
+
+<h4>Select users</h4>
+       <%= select_tag "aaaaa" ,options_for_select(User.all.map{|p| [p.username, p.id]}),prompt: "please select", data: {
+    remote: true,
+    url: 'http://127.0.0.1:3000/admin',
+    method: 'post'
+  }%> 
+
+
+<div id="target-for-change">
+<br>
+  <h4>Associated Business section</h4>
+  
+</div>

@@ -1,7 +1,11 @@
 class BusinessesController < ApplicationController
     before_action :set_post, only: %i[  show edit update destroy ]
     def index
-         @businesses=Business.all
+      if current_user.admin?
+        @businesses=Business.all
+      else
+        @businesses= current_user.businesses
+      end
          @all_users=User.all
          authorize @businesses
 
